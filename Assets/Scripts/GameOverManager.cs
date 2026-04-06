@@ -48,10 +48,6 @@ public class GameOverManager : MonoBehaviour
         Debug.Log("Gioco chiuso!");
         StartCoroutine(PlaySoundAndQuit(backSound));
     }
-
-    // --- COROUTINE ---
-
-    // Funzione fatta per far sentire il SFX per i tasti, per poi caricare la scena
     IEnumerator PlaySoundAndLoad(string scene, AudioClip sound)
     {
         if (audioSource != null && sound != null) audioSource.PlayOneShot(sound);
@@ -65,11 +61,10 @@ public class GameOverManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    // Funzione fatta per far sentire il SFX per i tasti, per poi uscire dal gioco
     IEnumerator PlaySoundAndQuit(AudioClip sound)
     {
         if (audioSource != null && sound != null) audioSource.PlayOneShot(sound);
-        yield return new WaitForSecondsRealtime(0.2f); // Aspetta che finisca il click
+        yield return new WaitForSecondsRealtime(0.2f);
         Application.Quit();
     }
 }

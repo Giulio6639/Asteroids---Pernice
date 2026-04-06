@@ -129,10 +129,8 @@ public class MainMenuController : MonoBehaviour
     {
         for (int i = 0; i < maxScores; i++)
         {
-            // Legge il record attuale in questa posizione
             int currentHighScore = PlayerPrefs.GetInt("HighScore" + i, 0);
 
-            // Se il nuovo punteggio è più alto del record in questa posizione, sposta i vecchi punteggi in "basso"
             if (newScore > currentHighScore)
             {
                 for (int j = maxScores - 1; j > i; j--)
@@ -140,7 +138,6 @@ public class MainMenuController : MonoBehaviour
                     PlayerPrefs.SetInt("HighScore" + j, PlayerPrefs.GetInt("HighScore" + (j - 1), 0));
                 }
 
-                // Inserisce il nuovo record nella posizione corretta
                 PlayerPrefs.SetInt("HighScore" + i, newScore);
 
                 PlayerPrefs.Save();
